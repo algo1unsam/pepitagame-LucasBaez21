@@ -15,9 +15,17 @@ object nido {
 
 
 object silvestre {
-
+	var property position = game.at(3, 0)
 	method image() = "silvestre.png"
-
-	method position() = game.origin()
+	method position() {
+		if(pepita.position().x()>= 3){
+			position = game.at(pepita.position().x(),0)
+		}
+		return position
+	}
+	method teEncontro(ave) {
+		game.say(ave, "¡PERDÍ!")
+		game.schedule(2000, { game.stop() })
+	}
 	
 }
