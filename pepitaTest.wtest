@@ -35,11 +35,17 @@ describe "Tests de Pepita" {
 		pepita.irA(nuevaPosicion)
 		assert.equals(nuevaPosicion, pepita.position())
 	}
-
+	//este test no logro que se ejecute correctamente, ya que en el metodo irA
+	//se encuentra la limitacion del tablero. Que es 10x10, pero al ejecutar el
+	//REPL de pepita, esta limitacion pasa a 5x5 (no encuentro el motivo)
+	//por ende el nido (7@8) está fuera del rango. Pero cuando ejecuto
+	//el juego en sí esto no ocurre. no encuentro solucion a esto. 
 	test "Al estar en la misma posicion que el nido pepita crece" {
-		pepita.irA(nido.position())
-		assert.equals("pepita-grande.png", pepita.image())
-	}
-
+		game.height(10) //Agregué estas dos lineas para que funcione correctamente.
+		game.width(10) 
+		pepita.irA(nido.position())									
+		assert.equals("pepita-grande.png", pepita.image())          
+																	
+	}														 		
 }
 
